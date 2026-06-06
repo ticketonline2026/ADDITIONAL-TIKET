@@ -1,1 +1,39 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Checkout Premium Event</title>
+<style>
+body{margin:0;font-family:Segoe UI,sans-serif;background:#02132d}
+.container{max-width:960px;margin:20px auto;background:#f4f5f8;border-radius:28px;overflow:hidden}
+.hero{background:linear-gradient(135deg,#03102f,#00194d);color:#fff;padding:40px;text-align:center}
+.steps{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.steps span{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.15)}
+.active{background:#ffc76b!important;color:#000}
+.content{padding:25px}
+.card{background:#fff;border-radius:20px;padding:20px;margin-bottom:20px;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.row{display:flex;justify-content:space-between;margin:10px 0}
+.qr{width:100%;max-width:420px;display:block;margin:auto}
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.trust div{background:#fff;padding:15px;border-radius:15px;text-align:center}
+button{width:100%;padding:18px;border:none;border-radius:14px;background:#083d96;color:#fff;font-size:20px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="hero">
+<h1>KONFIRMASI PEMBAYARAN</h1>
+<p>Tiket Digital Sounds Of Downtown Festival 2026</p>
+<div class="steps">
+<span>✓ Tiket</span><span>✓ Data</span><span class="active">💳 Pembayaran</span><span>🎫 E‑Ticket</span>
+</div>
+</div>
+<div class="content">
+<div class="card"><h3>ID TRANSAKSI</h3><h2>SDF-2026-874291</h2></div>
+<div class="card"><h3>Ringkasan Pesanan</h3><div class="row"><span>Additional Ticket Day 1</span><span>x1</span></div><div class="row"><span>Additional Ticket Day 2</span><span>x1</span></div><hr><div class="row"><strong>Total</strong><strong>Rp398.000</strong></div></div>
+<div class="card" style="text-align:center"><h3>QRIS Pembayaran</h3><img class="qr" src="qris-pembayaran.png" alt="QRIS"></div>
+<div class="card"><h3>Upload Bukti Pembayaran</h3><input type="file"></div>
+<div class="trust"><div>🔒 Pembayaran Aman</div><div>🛡 Data Terlindungi</div><div>⚡ Verifikasi Otomatis</div><div>🎫 Tiket Valid</div></div>
+<div style="margin-top:20px"><button>KONFIRMASI PEMBAYARAN</button></div>
+</div></div></body></html>
