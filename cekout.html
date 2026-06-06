@@ -18,9 +18,29 @@ body{margin:0;font-family:Segoe UI,sans-serif;background:#02132d}
 .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 .trust div{background:#fff;padding:15px;border-radius:15px;text-align:center}
 button{width:100%;padding:18px;border:none;border-radius:14px;background:#083d96;color:#fff;font-size:20px}
+button:disabled{opacity:.5;cursor:not-allowed}
+
+.loadingScreen{
+position:fixed;inset:0;
+background:linear-gradient(135deg,#01091d,#00153d,#021f5a);
+display:none;justify-content:center;align-items:center;
+flex-direction:column;z-index:99999;color:#fff;overflow:hidden;
+}
+.bankLogo{font-size:34px;font-weight:700;letter-spacing:2px;margin-bottom:20px;text-align:center}
+.loadingText{font-size:24px;font-weight:600;margin-bottom:25px;text-align:center}
+.progressBox{width:90%;max-width:700px}
+.progressBar{height:28px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.2)}
+.progressFill{width:0%;height:100%;background:linear-gradient(90deg,#00e5ff,#00ff88,#ffe600,#ff8c00);transition:width .5s}
+.percent{font-size:32px;font-weight:bold;margin-top:15px;text-align:center}
+.statusBox{margin-top:25px;font-size:18px;text-align:center}
+.glow{position:absolute;width:300px;height:300px;filter:blur(140px);opacity:.15;animation:pulse 4s infinite}
+.glow1{background:#00e5ff;left:-100px;top:-100px}
+.glow2{background:#00ff88;right:-100px;bottom:-100px}
+@keyframes pulse{50%{transform:scale(1.4)}}
 </style>
 </head>
 <body>
+
 <div class="container">
 <div class="hero">
 <h1>KONFIRMASI PEMBAYARAN</h1>
@@ -39,17 +59,14 @@ button{width:100%;padding:18px;border:none;border-radius:14px;background:#083d96
 
 <div class="card">
 <h3>Ringkasan Pesanan</h3>
-
 <div class="row">
-<span id="ticketName">-</span>
-<span id="ticketQty">x0</span>
+<span id="ticketName">Tiket Festival</span>
+<span id="ticketQty">x1</span>
 </div>
-
 <hr>
-
 <div class="row">
 <strong>Total</strong>
-<strong id="totalBayar">Rp0</strong>
+<strong id="totalBayar">Rp550.000</strong>
 </div>
 </div>
 
@@ -60,7 +77,14 @@ button{width:100%;padding:18px;border:none;border-radius:14px;background:#083d96
 
 <div class="card">
 <h3>Upload Bukti Pembayaran</h3>
-<input type="file">
+<input type="file" id="buktiBayar">
+
+<div style="margin-top:15px">
+<label>
+<input type="checkbox" id="cekSetuju">
+Saya sudah melakukan pembayaran dan data yang saya kirim sudah benar
+</label>
+</div>
 </div>
 
 <div class="trust">
@@ -71,24 +95,85 @@ button{width:100%;padding:18px;border:none;border-radius:14px;background:#083d96
 </div>
 
 <div style="margin-top:20px">
-<button>KONFIRMASI PEMBAYARAN</button>
+<button id="btnKonfirmasi" disabled>KONFIRMASI PEMBAYARAN</button>
 </div>
 
 </div>
+</div>
+
+<div class="loadingScreen" id="loadingScreen">
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<div class="bankLogo">🏦 PREMIUM PAYMENT GATEWAY</div>
+<div class="loadingText" id="loadingText">Menghubungkan ke Server Pembayaran...</div>
+
+<div class="progressBox">
+<div class="progressBar">
+<div class="progressFill" id="progressFill"></div>
+</div>
+<div class="percent" id="percent">0%</div>
+</div>
+
+<div class="statusBox" id="statusBox">Menunggu proses verifikasi...</div>
 </div>
 
 <script>
-const tiket = localStorage.getItem('jenisTiket') || 'Tiket Festival';
-const jumlah = localStorage.getItem('jumlahTiket') || '0';
-const total = parseInt(localStorage.getItem('totalPembayaran') || 0);
+const upload=document.getElementById('buktiBayar');
+const ceklis=document.getElementById('cekSetuju');
+const btn=document.getElementById('btnKonfirmasi');
 
-document.getElementById('ticketName').textContent = tiket;
-document.getElementById('ticketQty').textContent = 'x' + jumlah;
-document.getElementById('totalBayar').textContent =
-'Rp' + total.toLocaleString('id-ID');
+function cekAktif(){
+btn.disabled=!(upload.files.length>0 && ceklis.checked);
+}
 
-const trx = 'SDF-2026-' + Math.floor(100000 + Math.random()*900000);
-document.getElementById('trxId').textContent = trx;
+upload.addEventListener('change',cekAktif);
+ceklis.addEventListener('change',cekAktif);
+
+const trx='SDF-2026-'+Math.floor(100000+Math.random()*900000);
+document.getElementById('trxId').textContent=trx;
+
+btn.addEventListener('click',()=>{
+
+document.getElementById('loadingScreen').style.display='flex';
+
+const proses=[
+"Menghubungkan ke Gateway Pembayaran...",
+"Memvalidasi QRIS...",
+"Memeriksa Bukti Pembayaran...",
+"Mencocokkan Nominal Transaksi...",
+"Sinkronisasi Database...",
+"Memverifikasi Identitas Pembeli...",
+"Validasi Tiket Festival...",
+"Menyesuaikan Data Pesanan...",
+"Verifikasi Otomatis Aktif...",
+"Final Checking..."
+];
+
+let progress=0;
+let tahap=0;
+
+const interval=setInterval(()=>{
+progress++;
+document.getElementById('progressFill').style.width=progress+'%';
+document.getElementById('percent').innerText=progress+'%';
+
+if(progress%10===0){
+document.getElementById('loadingText').innerText=proses[tahap];
+document.getElementById('statusBox').innerText='Status: '+proses[tahap];
+if(tahap<proses.length-1) tahap++;
+}
+
+if(progress>=100){
+clearInterval(interval);
+document.getElementById('loadingText').innerText='Pembayaran Berhasil Diverifikasi';
+document.getElementById('statusBox').innerText='Mengalihkan ke status.html...';
+setTimeout(()=>{
+window.location.href='status.html';
+},3000);
+}
+},1800);
+});
 </script>
 
 </body>
