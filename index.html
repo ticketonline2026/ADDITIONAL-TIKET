@@ -240,6 +240,7 @@ bottom:0;
 background:#fff;
 padding:15px;
 box-shadow:0 -5px 15px rgba(0,0,0,.1);
+z-index:1000;
 }
 
 .pay-btn{
@@ -255,10 +256,37 @@ color:#fff;
 font-size:20px;
 font-weight:bold;
 opacity:.5;
+cursor:pointer;
+transition:.3s;
 }
 
 .pay-btn.active{
 opacity:1;
+}
+
+.loading-screen{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.spinner{
+width:70px;
+height:70px;
+border:6px solid rgba(255,255,255,.2);
+border-top:6px solid #fff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
 }
 
 @media(max-width:768px){
@@ -273,7 +301,7 @@ font-size:22px;
 
 <div class="container">
 
-<img src="poster-event.png" class="poster">
+<img src="poster-event.png" class="poster" alt="Poster Event">
 
 <div class="header">
 
@@ -321,7 +349,6 @@ PRESALE MANDIRI
 </div>
 
 <div class="additional-card">
-
 <div>Presale Mandiri - Day 1</div>
 
 <div class="low-stock">
@@ -341,11 +368,9 @@ Rp199.000
 </div>
 
 </div>
-
 </div>
 
 <div class="additional-card">
-
 <div>Presale Mandiri - Day 2</div>
 
 <div class="low-stock">
@@ -365,45 +390,26 @@ Rp199.000
 </div>
 
 </div>
-
 </div>
 
 <div class="event-info-footer">
-
-<div class="footer-item">
-🔒 Pembayaran Aman
-</div>
-
-<div class="footer-item">
-🎫 Tiket Dijamin Valid
-</div>
-
-<div class="footer-item">
-⚡ Proses Instan
-</div>
-
+<div class="footer-item">🔒 Pembayaran Aman</div>
+<div class="footer-item">🎫 Tiket Dijamin Valid</div>
+<div class="footer-item">⚡ Proses Instan</div>
 </div>
 
 <section class="powered">
-
 <h3>POWERED BY</h3>
-
 <img src="powered-by.png" alt="Powered By">
-
 </section>
 
 <div class="footer-bottom">
-
 <h3>Need Help?</h3>
-
 <p>📞 0812-3456-7890</p>
-
 <p>✉ support@soundsofdowntown.com</p>
-
 <p style="margin-top:25px;">
 © 2026 Sounds Of Downtown Festival
 </p>
-
 </div>
 
 </div>
@@ -414,19 +420,23 @@ LANJUTKAN - Rp 0
 </button>
 </div>
 
+<div id="loadingScreen" class="loading-screen">
+<div class="spinner"></div>
+</div>
+
 <script>
 
-const PRICE=199000;
+const PRICE = 199000;
 
 function changeQty(id,val){
 
-let el=document.getElementById(id);
+const el = document.getElementById(id);
 
-let qty=parseInt(el.innerText)+val;
+let qty = parseInt(el.textContent) + val;
 
-if(qty<0) qty=0;
+if(qty < 0) qty = 0;
 
-el.innerText=qty;
+el.textContent = qty;
 
 updateTotal();
 
@@ -434,21 +444,40 @@ updateTotal();
 
 function updateTotal(){
 
-let total=
-(+day1.innerText*PRICE)+
-(+day2.innerText*PRICE);
+const day1 = document.getElementById('day1');
+const day2 = document.getElementById('day2');
 
-let btn=document.getElementById('payBtn');
+const total =
+(parseInt(day1.textContent) * PRICE) +
+(parseInt(day2.textContent) * PRICE);
 
-btn.innerHTML=
-'LANJUTKAN - Rp '+
+const btn = document.getElementById('payBtn');
+
+btn.innerHTML =
+'LANJUTKAN - Rp ' +
 total.toLocaleString('id-ID');
 
-btn.disabled=total===0;
+btn.disabled = total === 0;
 
-btn.classList.toggle('active',total>0);
+btn.classList.toggle('active', total > 0);
 
 }
+
+document.getElementById('payBtn')
+.addEventListener('click',function(){
+
+if(this.disabled) return;
+
+document.getElementById('loadingScreen')
+.style.display = 'flex';
+
+setTimeout(function(){
+
+window.location.href = 'data.html';
+
+},3000);
+
+});
 
 </script>
 
