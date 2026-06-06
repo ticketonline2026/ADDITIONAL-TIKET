@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SOUNDS OF DOWNTOWN FESTIVAL 2026</title>
+<title>Sounds Of Downtown Festival 2026</title>
 
 <style>
 *{
@@ -15,7 +15,12 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#f4f6f9;
+background:linear-gradient(
+180deg,
+#0f2f77 0,
+#0f2f77 320px,
+#f4f6f9 320px
+);
 color:#222;
 }
 
@@ -23,6 +28,9 @@ color:#222;
 max-width:900px;
 margin:auto;
 background:#fff;
+overflow:hidden;
+border-radius:28px 28px 0 0;
+box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
 .poster{
@@ -31,11 +39,11 @@ display:block;
 }
 
 .header{
-padding:20px;
+padding:24px;
 }
 
 .title{
-font-size:clamp(26px,4vw,40px);
+font-size:32px;
 font-weight:800;
 margin:15px 0;
 }
@@ -50,45 +58,22 @@ margin-top:20px;
 background:#f8f9fb;
 padding:20px;
 border-radius:18px;
-}
-
-.desc-box h2{
-margin-bottom:10px;
-}
-
-.desc-content{
 line-height:1.8;
-color:#444;
-}
-
-.more-content{
-display:none;
-margin-top:10px;
-}
-
-.read-more{
-display:inline-block;
-margin-top:12px;
-color:#2979ff;
-font-weight:bold;
-cursor:pointer;
 }
 
 .ticket-title{
 text-align:center;
-font-size:34px;
+font-size:32px;
 font-weight:800;
-margin:40px 0 10px;
+margin:35px 0;
 }
 
 .section-title{
 display:flex;
 align-items:center;
 gap:10px;
-margin:30px 20px 20px;
-font-size:18px;
+margin:25px 20px;
 font-weight:bold;
-color:#444;
 }
 
 .section-title::before,
@@ -100,12 +85,11 @@ background:#ddd;
 }
 
 .ticket-card{
-background:#fff;
-border:1px solid #e8e8e8;
-border-radius:22px;
-padding:20px;
+background:#fafafa;
 margin:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.05);
+padding:20px;
+border-radius:20px;
+border:1px solid #eee;
 }
 
 .ticket-head{
@@ -113,33 +97,20 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 gap:10px;
-font-weight:bold;
 }
 
-.ticket-name{
-font-size:18px;
-}
-
-.price-row{
-margin-top:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-gap:10px;
-}
-
-.price{
-font-size:28px;
-font-weight:800;
-}
-
-.soldout{
+.sold-badge{
 background:#ffe5e5;
 color:#dc3545;
 padding:8px 14px;
 border-radius:999px;
 font-weight:bold;
+}
+
+.price{
+font-size:28px;
+font-weight:800;
+margin-top:12px;
 }
 
 .additional-card{
@@ -150,7 +121,7 @@ padding:22px;
 margin:18px;
 overflow:hidden;
 border:1px solid #ececec;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
 
 .additional-card::before{
@@ -183,6 +154,15 @@ margin-top:12px;
 0%{transform:scale(1);}
 50%{transform:scale(1.05);}
 100%{transform:scale(1);}
+}
+
+.price-row{
+margin-top:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
 }
 
 .qty{
@@ -225,30 +205,32 @@ font-size:14px;
 font-weight:600;
 }
 
+.powered{
+text-align:center;
+padding:40px 20px;
+}
+
+.powered h3{
+margin-bottom:20px;
+color:#666;
+letter-spacing:2px;
+}
+
+.powered img{
+width:min(90%,520px);
+height:auto;
+}
+
 .footer-bottom{
 background:#111827;
 color:white;
 text-align:center;
 padding:40px 20px 110px;
-margin-top:40px;
-}
-
-.footer-bottom h3{
-margin-bottom:15px;
 }
 
 .footer-bottom p{
-opacity:.85;
-margin:8px 0;
-}
-
-.footer-logo{
-margin-top:20px;
-}
-
-.footer-logo img{
-max-width:150px;
-width:100%;
+margin-top:10px;
+opacity:.9;
 }
 
 .sticky-footer{
@@ -264,8 +246,8 @@ box-shadow:0 -5px 15px rgba(0,0,0,.1);
 .pay-btn{
 width:100%;
 max-width:900px;
-display:block;
 margin:auto;
+display:block;
 height:60px;
 border:none;
 border-radius:16px;
@@ -274,46 +256,15 @@ color:#fff;
 font-size:20px;
 font-weight:bold;
 opacity:.5;
-cursor:pointer;
 }
 
 .pay-btn.active{
 opacity:1;
 }
 
-.loading{
-position:fixed;
-inset:0;
-background:rgba(255,255,255,.96);
-display:none;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:99999;
-}
-
-.loader{
-width:80px;
-height:80px;
-border:8px solid #ddd;
-border-top:8px solid #2979ff;
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
 @media(max-width:768px){
 .price{
 font-size:22px;
-}
-
-.ticket-name{
-font-size:16px;
 }
 }
 </style>
@@ -323,11 +274,13 @@ font-size:16px;
 
 <div class="container">
 
+<img src="poster-event.png" class="poster">
+
 <div class="header">
 
-<img src="poster-livin.png" class="poster">
-
-<h1 class="title">SOUNDS OF DOWNTOWN FESTIVAL 2026</h1>
+<h1 class="title">
+SOUNDS OF DOWNTOWN FESTIVAL 2026
+</h1>
 
 <div class="info">
 📅 1 & 2 Agustus 2026<br>
@@ -335,81 +288,33 @@ font-size:16px;
 </div>
 
 <div class="desc-box">
-<h2>Deskripsi Event</h2>
-
-<div class="desc-content">
-Sounds of Downtown Festival 2026 menghadirkan pengalaman festival musik terbesar dengan line-up artis terbaik Indonesia.
-
-<div class="more-content" id="moreText">
-<br>
-Festival ini menghadirkan panggung megah, area kuliner, komunitas kreatif, dan berbagai aktivitas menarik sepanjang acara.
-
-<br><br>
-
-<h3>Syarat & Ketentuan</h3>
-
-<p>
-• Tiket berlaku untuk 1 orang<br>
-• Tiket tidak dapat direfund<br>
-• Data wajib diisi dengan benar<br>
-• Dilarang membawa barang terlarang
-</p>
-
-</div>
-
-<span class="read-more" onclick="toggleDesc()" id="btnMore">
-Baca Selengkapnya
-</span>
-
-</div>
+Festival musik spektakuler yang menghadirkan berbagai musisi terbaik Indonesia dengan pengalaman hiburan modern, area kuliner, komunitas kreatif, dan berbagai aktivitas menarik selama acara berlangsung.
 </div>
 
 </div>
 
-<div class="ticket-title">🎟 TIKET</div>
+<div class="ticket-title">
+🎟 TIKET
+</div>
 
 <div class="section-title">
 PRESALE MANDIRI
 </div>
 
 <div class="ticket-card">
-
 <div class="ticket-head">
-<div class="ticket-name">
-Presale Mandiri - Day 1
+<span>Presale Mandiri - Day 1</span>
+<div class="sold-badge">SOLD OUT</div>
 </div>
-
-<div class="soldout">
-SOLD OUT
-</div>
-</div>
-
-<div class="price-row">
-<div class="price">
-Rp159.900
-</div>
-</div>
-
+<div class="price">Rp159.900</div>
 </div>
 
 <div class="ticket-card">
-
 <div class="ticket-head">
-<div class="ticket-name">
-Presale Mandiri - Day 2
+<span>Presale Mandiri - Day 2</span>
+<div class="sold-badge">SOLD OUT</div>
 </div>
-
-<div class="soldout">
-SOLD OUT
-</div>
-</div>
-
-<div class="price-row">
-<div class="price">
-Rp159.900
-</div>
-</div>
-
+<div class="price">Rp159.900</div>
 </div>
 
 <div class="section-title">
@@ -418,9 +323,7 @@ Rp159.900
 
 <div class="additional-card">
 
-<div class="ticket-name">
-Presale Mandiri - Day 1
-</div>
+<div>Presale Mandiri - Day 1</div>
 
 <div class="low-stock">
 ⚡ Hampir Habis
@@ -444,9 +347,7 @@ Rp199.000
 
 <div class="additional-card">
 
-<div class="ticket-name">
-Presale Mandiri - Day 2
-</div>
+<div>Presale Mandiri - Day 2</div>
 
 <div class="low-stock">
 ⚡ Hampir Habis
@@ -484,18 +385,23 @@ Rp199.000
 
 </div>
 
+<section class="powered">
+
+<h3>POWERED BY</h3>
+
+<img src="powered-by.png" alt="Powered By">
+
+</section>
+
 <div class="footer-bottom">
 
 <h3>Need Help?</h3>
 
 <p>📞 0812-3456-7890</p>
+
 <p>✉ support@soundsofdowntown.com</p>
 
-<div class="footer-logo">
-<img src="logo3.png">
-</div>
-
-<p style="margin-top:20px;">
+<p style="margin-top:25px;">
 © 2026 Sounds Of Downtown Festival
 </p>
 
@@ -509,28 +415,9 @@ LANJUTKAN - Rp 0
 </button>
 </div>
 
-<div class="loading" id="loading">
-<div class="loader"></div>
-<h2>Mohon Tunggu...</h2>
-<p>Mengalihkan ke halaman data peserta</p>
-</div>
-
 <script>
 
-const PRICE = 199000;
-
-function toggleDesc(){
-const more=document.getElementById('moreText');
-const btn=document.getElementById('btnMore');
-
-if(more.style.display==='block'){
-more.style.display='none';
-btn.innerText='Baca Selengkapnya';
-}else{
-more.style.display='block';
-btn.innerText='Tutup';
-}
-}
+const PRICE=199000;
 
 function changeQty(id,val){
 
@@ -560,34 +447,9 @@ total.toLocaleString('id-ID');
 
 btn.disabled=total===0;
 
-btn.classList.toggle(
-'active',
-total>0
-);
+btn.classList.toggle('active',total>0);
 
 }
-
-document
-.getElementById('payBtn')
-.addEventListener('click',function(){
-
-let total=
-(+day1.innerText*PRICE)+
-(+day2.innerText*PRICE);
-
-if(total<=0) return;
-
-document
-.getElementById('loading')
-.style.display='flex';
-
-setTimeout(function(){
-
-window.location.href='data.html';
-
-},3000);
-
-});
 
 </script>
 
