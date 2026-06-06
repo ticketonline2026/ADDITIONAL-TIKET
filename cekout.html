@@ -29,11 +29,67 @@ button{width:100%;padding:18px;border:none;border-radius:14px;background:#083d96
 <span>✓ Tiket</span><span>✓ Data</span><span class="active">💳 Pembayaran</span><span>🎫 E‑Ticket</span>
 </div>
 </div>
+
 <div class="content">
-<div class="card"><h3>ID TRANSAKSI</h3><h2>SDF-2026-874291</h2></div>
-<div class="card"><h3>Ringkasan Pesanan</h3><div class="row"><span>Additional Ticket Day 1</span><span>x1</span></div><div class="row"><span>Additional Ticket Day 2</span><span>x1</span></div><hr><div class="row"><strong>Total</strong><strong>Rp398.000</strong></div></div>
-<div class="card" style="text-align:center"><h3>QRIS Pembayaran</h3><img class="qr" src="qris-pembayaran.png" alt="QRIS"></div>
-<div class="card"><h3>Upload Bukti Pembayaran</h3><input type="file"></div>
-<div class="trust"><div>🔒 Pembayaran Aman</div><div>🛡 Data Terlindungi</div><div>⚡ Verifikasi Otomatis</div><div>🎫 Tiket Valid</div></div>
-<div style="margin-top:20px"><button>KONFIRMASI PEMBAYARAN</button></div>
-</div></div></body></html>
+
+<div class="card">
+<h3>ID TRANSAKSI</h3>
+<h2 id="trxId">SDF-2026-000000</h2>
+</div>
+
+<div class="card">
+<h3>Ringkasan Pesanan</h3>
+
+<div class="row">
+<span id="ticketName">-</span>
+<span id="ticketQty">x0</span>
+</div>
+
+<hr>
+
+<div class="row">
+<strong>Total</strong>
+<strong id="totalBayar">Rp0</strong>
+</div>
+</div>
+
+<div class="card" style="text-align:center">
+<h3>QRIS Pembayaran</h3>
+<img class="qr" src="qris-pembayaran.png" alt="QRIS">
+</div>
+
+<div class="card">
+<h3>Upload Bukti Pembayaran</h3>
+<input type="file">
+</div>
+
+<div class="trust">
+<div>🔒 Pembayaran Aman</div>
+<div>🛡 Data Terlindungi</div>
+<div>⚡ Verifikasi Otomatis</div>
+<div>🎫 Tiket Valid</div>
+</div>
+
+<div style="margin-top:20px">
+<button>KONFIRMASI PEMBAYARAN</button>
+</div>
+
+</div>
+</div>
+
+<script>
+const tiket = localStorage.getItem('jenisTiket') || 'Tiket Festival';
+const jumlah = localStorage.getItem('jumlahTiket') || '0';
+const total = parseInt(localStorage.getItem('totalPembayaran') || 0);
+
+document.getElementById('ticketName').textContent = tiket;
+document.getElementById('ticketQty').textContent = 'x' + jumlah;
+document.getElementById('totalBayar').textContent =
+'Rp' + total.toLocaleString('id-ID');
+
+const trx = 'SDF-2026-' + Math.floor(100000 + Math.random()*900000);
+document.getElementById('trxId').textContent = trx;
+</script>
+
+</body>
+</html>
