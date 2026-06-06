@@ -271,6 +271,20 @@ duration--;
 }
 
 }
+document.getElementById('namaLengkap').textContent =
+localStorage.getItem('nama') || '-';
+
+document.getElementById('emailUser').textContent =
+localStorage.getItem('email') || '-';
+
+document.getElementById('jenisTiket').textContent =
+localStorage.getItem('jenisTiket') || '-';
+
+document.getElementById('jumlahTiket').textContent =
+localStorage.getItem('jumlahTiket') || '-';
+
+document.getElementById('trxId').textContent =
+localStorage.getItem('trxId') || '-';
 
 setInterval(updateCountdown,1000);
 updateCountdown();
