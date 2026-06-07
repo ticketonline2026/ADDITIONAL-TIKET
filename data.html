@@ -250,17 +250,8 @@ animation:floatPremium 6s ease-in-out infinite;
 </div>
 
 <script>
-const target=new Date().getTime() + (2 * 24 * 60 * 60 * 1000);
-setInterval(()=>{
-let n=new Date().getTime(),x=target-n;
-document.getElementById('d').textContent=Math.max(0,Math.floor(x/86400000));
-document.getElementById('h').textContent=Math.max(0,Math.floor((x%86400000)/3600000));
-document.getElementById('m').textContent=Math.max(0,Math.floor((x%3600000)/60000));
-document.getElementById('s').textContent=Math.max(0,Math.floor((x%60000)/1000));
-},1000);
-
-
-let selectedPrice=159900;
+// Countdown dihapus karena elemen d,h,m,s tidak tersedia pada HTML.
+let selectedPrice=199900;
 let selectedTicket='PRESALE DAY 1';
 
 document.querySelectorAll('.ticket-option').forEach(el=>{
