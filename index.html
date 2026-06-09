@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sounds Of Downtown Festival 2026</title>
+
+<title>Additional Ticket</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,468 +16,405 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(
-180deg,
-#0f2f77 0,
-#0f2f77 320px,
-#f4f6f9 320px
-);
-color:#222;
-}
-
-.container{
-max-width:900px;
-margin:auto;
-background:#fff;
-overflow:hidden;
-border-radius:28px 28px 0 0;
-box-shadow:0 20px 50px rgba(0,0,0,.12);
-}
-
-.poster{
-width:100%;
-display:block;
-}
-
-.header{
-padding:24px;
-}
-
-.title{
-font-size:32px;
-font-weight:800;
-margin:15px 0;
-}
-
-.info{
-color:#666;
-line-height:1.8;
-}
-
-.desc-box{
-margin-top:20px;
-background:#f8f9fb;
+background:#f3f8ff;
 padding:20px;
-border-radius:18px;
-line-height:1.8;
+padding-bottom:120px;
 }
 
-.ticket-title{
-text-align:center;
-font-size:32px;
-font-weight:800;
-margin:35px 0;
-}
+/* ===== TITLE ===== */
 
 .section-title{
-display:flex;
-align-items:center;
-gap:10px;
-margin:25px 20px;
-font-weight:bold;
-}
-
-.section-title::before,
-.section-title::after{
-content:"";
-flex:1;
-height:1px;
-background:#ddd;
-}
-
-.ticket-card{
-background:#fafafa;
-margin:15px;
-padding:20px;
-border-radius:20px;
-border:1px solid #eee;
-}
-
-.ticket-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-}
-
-.sold-badge{
-background:#ffe5e5;
-color:#dc3545;
-padding:8px 14px;
-border-radius:999px;
-font-weight:bold;
-}
-
-.price{
 font-size:28px;
 font-weight:800;
-margin-top:12px;
+margin-bottom:20px;
+color:#0f4c81;
 }
 
-.additional-card{
+/* ===== TICKET CARD ===== */
+
+.ticket-card{
 position:relative;
 background:#fff;
-border-radius:24px;
-padding:22px;
-margin:18px;
+border-radius:30px;
 overflow:hidden;
-border:1px solid #ececec;
-box-shadow:0 10px 35px rgba(0,0,0,.08);
+padding:24px;
+margin-bottom:25px;
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+border:1px solid #dbeafe;
 }
 
-.additional-card::before{
+/* STRIP ATAS */
+
+.ticket-card::after{
 content:"";
 position:absolute;
 top:0;
 left:0;
 width:100%;
-height:6px;
+height:8px;
 background:linear-gradient(
 90deg,
-#ff6b00,
-#ffb700
+#00aaff,
+#00d9ff
 );
 }
 
-.low-stock{
+/* LUBANG TIKET */
+
+.ticket-card::before{
+content:"";
+position:absolute;
+left:-22px;
+top:65%;
+width:44px;
+height:44px;
+background:#f3f8ff;
+border-radius:50%;
+box-shadow:
+calc(100vw) 0 0 #f3f8ff;
+}
+
+/* BADGE */
+
+.sale{
 display:inline-block;
-background:#fff3cd;
-color:#ff6b00;
+background:#dff4ff;
+color:#0095ff;
+padding:8px 14px;
+border-radius:12px;
+font-size:13px;
+font-weight:700;
+}
+
+.stock{
+position:absolute;
+right:20px;
+top:20px;
+background:#fff5db;
+color:#ff8a00;
 padding:8px 14px;
 border-radius:999px;
-font-size:13px;
+font-size:12px;
 font-weight:bold;
-animation:pulse 1.5s infinite;
-margin-top:12px;
 }
 
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
-}
+/* TITLE */
 
-.price-row{
+.ticket-name{
+font-size:24px;
+font-weight:800;
 margin-top:15px;
+margin-bottom:15px;
+color:#111;
+}
+
+/* DESC */
+
+.ticket-info{
+line-height:1.9;
+font-size:14px;
+color:#555;
+}
+
+/* SOBEKAN */
+
+.divider{
+position:relative;
+margin:24px 0;
+border-top:2px dashed #b9dcff;
+}
+
+.divider::before{
+content:"";
+position:absolute;
+left:-36px;
+top:-22px;
+width:44px;
+height:44px;
+background:#f3f8ff;
+border-radius:50%;
+}
+
+.divider::after{
+content:"";
+position:absolute;
+right:-36px;
+top:-22px;
+width:44px;
+height:44px;
+background:#f3f8ff;
+border-radius:50%;
+}
+
+/* BOTTOM */
+
+.ticket-bottom{
 display:flex;
 justify-content:space-between;
 align-items:center;
-flex-wrap:wrap;
-gap:10px;
+gap:15px;
 }
 
-.qty{
-display:flex;
+.price{
+font-size:30px;
+font-weight:800;
+color:#00aaff;
+}
+
+/* BUTTON */
+
+.select-btn{
+background:#00aaff;
+color:white;
+border:none;
+padding:13px 20px;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+}
+
+/* QTY */
+
+.qty-box{
+display:none;
 align-items:center;
 gap:10px;
 }
 
-.qty button{
-width:42px;
-height:42px;
+.qty-btn{
+width:40px;
+height:40px;
 border:none;
 border-radius:12px;
-background:#2979ff;
-color:#fff;
+background:#00aaff;
+color:white;
 font-size:22px;
 cursor:pointer;
 }
 
-.qty span{
-min-width:30px;
+.qty-number{
+min-width:45px;
 text-align:center;
-font-size:20px;
-font-weight:bold;
+font-size:22px;
+font-weight:800;
 }
 
-.event-info-footer{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-margin:40px 20px;
-}
+/* CHECKOUT */
 
-.footer-item{
-background:#f8f9fb;
-padding:12px 18px;
-border-radius:14px;
-font-size:14px;
-font-weight:600;
-}
-
-.powered{
-text-align:center;
-padding:40px 20px;
-}
-
-.powered h3{
-margin-bottom:20px;
-color:#666;
-letter-spacing:2px;
-}
-
-.powered img{
-width:min(90%,520px);
-height:auto;
-}
-
-.footer-bottom{
-background:#111827;
-color:white;
-text-align:center;
-padding:40px 20px 110px;
-}
-
-.footer-bottom p{
-margin-top:10px;
-opacity:.9;
-}
-
-.sticky-footer{
+.checkout{
 position:fixed;
 left:0;
 right:0;
 bottom:0;
-background:#fff;
+background:white;
 padding:15px;
-box-shadow:0 -5px 15px rgba(0,0,0,.1);
-z-index:1000;
+box-shadow:0 -8px 25px rgba(0,0,0,.08);
+z-index:999;
 }
 
-.pay-btn{
-width:100%;
+.checkout-wrap{
 max-width:900px;
 margin:auto;
-display:block;
-height:60px;
-border:none;
-border-radius:16px;
-background:#2979ff;
-color:#fff;
-font-size:20px;
-font-weight:bold;
-opacity:.5;
-cursor:pointer;
-transition:.3s;
-}
-
-.pay-btn.active{
-opacity:1;
-}
-
-.loading-screen{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.85);
-display:none;
-justify-content:center;
+display:flex;
+justify-content:space-between;
 align-items:center;
-z-index:99999;
+gap:15px;
 }
 
-.spinner{
-width:70px;
-height:70px;
-border:6px solid rgba(255,255,255,.2);
-border-top:6px solid #fff;
-border-radius:50%;
-animation:spin 1s linear infinite;
+.total{
+font-size:24px;
+font-weight:800;
+color:#00aaff;
 }
 
-@keyframes spin{
-to{
-transform:rotate(360deg);
+.buy-btn{
+background:#00aaff;
+color:white;
+border:none;
+padding:16px 25px;
+border-radius:15px;
+font-weight:800;
+cursor:pointer;
 }
+
+.buy-btn:disabled{
+background:#c7d7e7;
+cursor:not-allowed;
 }
+
+/* MOBILE */
 
 @media(max-width:768px){
+
+.ticket-bottom{
+flex-direction:column;
+align-items:flex-start;
+}
+
 .price{
-font-size:22px;
+font-size:26px;
 }
+
+.checkout-wrap{
+flex-direction:column;
 }
+
+.buy-btn{
+width:100%;
+}
+
+}
+
 </style>
 </head>
-
 <body>
 
-<div class="container">
-
-<img src="poster-event.png" class="poster" alt="Poster Event">
-
-<div class="header">
-
-<h1 class="title">
-SOUNDS OF DOWNTOWN FESTIVAL 2026
-</h1>
-
-<div class="info">
-📅 1 & 2 Agustus 2026<br>
-📍 Surabaya
-</div>
-
-<div class="desc-box">
-Festival musik spektakuler yang menghadirkan berbagai musisi terbaik Indonesia dengan pengalaman hiburan modern, area kuliner, komunitas kreatif, dan berbagai aktivitas menarik selama acara berlangsung.
-</div>
-
-</div>
-
-<div class="ticket-title">
-🎟 TIKET
-</div>
-
 <div class="section-title">
-PRESALE MANDIRI
+🎫 ADDITIONAL TICKET
 </div>
+
+<!-- CARD 1 -->
 
 <div class="ticket-card">
-<div class="ticket-head">
-<span>Presale Mandiri - Day 1</span>
-<div class="sold-badge">SOLD OUT</div>
-</div>
-<div class="price">Rp159.900</div>
+
+<div class="sale">ON SALE</div>
+
+<div class="stock">
+🔥 TERSISA 15 TIKET
 </div>
 
-<div class="ticket-card">
-<div class="ticket-head">
-<span>Presale Mandiri - Day 2</span>
-<div class="sold-badge">SOLD OUT</div>
-</div>
-<div class="price">Rp159.900</div>
+<div class="ticket-name">
+EXTRA SALE FESTIVAL
 </div>
 
-<div class="section-title">
-🔥 ADDITIONAL TICKETS
+<div class="ticket-info">
+
+• Jam masuk dibebaskan maksimal sebelum 20.00 WIB.<br>
+• Pembelian 1–10 tiket.<br>
+• Data peserta dapat dibedakan atau disamakan.<br>
+• Semua kategori adalah Festival Standing.<br>
+• Anak dibawah 7 tahun tidak dikenakan biaya tiket.<br>
+
 </div>
 
-<div class="additional-card">
-<div>Presale Mandiri - Day 1</div>
+<div class="divider"></div>
 
-<div class="low-stock">
-⚡ Hampir Habis
-</div>
-
-<div class="price-row">
+<div class="ticket-bottom">
 
 <div class="price">
-Rp199.000
+Rp150.000
 </div>
 
-<div class="qty">
-<button onclick="changeQty('day1',-1)">−</button>
-<span id="day1">0</span>
-<button onclick="changeQty('day1',1)">+</button>
-</div>
-
-</div>
-</div>
-
-<div class="additional-card">
-<div>Presale Mandiri - Day 2</div>
-
-<div class="low-stock">
-⚡ Hampir Habis
-</div>
-
-<div class="price-row">
-
-<div class="price">
-Rp199.000
-</div>
-
-<div class="qty">
-<button onclick="changeQty('day2',-1)">−</button>
-<span id="day2">0</span>
-<button onclick="changeQty('day2',1)">+</button>
-</div>
-
-</div>
-</div>
-
-<div class="event-info-footer">
-<div class="footer-item">🔒 Pembayaran Aman</div>
-<div class="footer-item">🎫 Tiket Dijamin Valid</div>
-<div class="footer-item">⚡ Proses Instan</div>
-</div>
-
-<section class="powered">
-<h3>POWERED BY</h3>
-<img src="powered-by.png" alt="Powered By">
-</section>
-
-<div class="footer-bottom">
-<h3>Need Help?</h3>
-<p>📞 0812-3456-7890</p>
-<p>✉ support@soundsofdowntown.com</p>
-<p style="margin-top:25px;">
-© 2026 Sounds Of Downtown Festival
-</p>
-</div>
-
-</div>
-
-<div class="sticky-footer">
-<button id="payBtn" class="pay-btn" disabled>
-LANJUTKAN - Rp 0
+<button class="select-btn"
+id="btn1"
+onclick="showQty()">
+Pilih Tiket
 </button>
+
+<div class="qty-box" id="qtyBox">
+
+<button class="qty-btn"
+onclick="minusQty()">
+−
+</button>
+
+<div class="qty-number"
+id="qty">
+1
 </div>
 
-<div id="loadingScreen" class="loading-screen">
-<div class="spinner"></div>
+<button class="qty-btn"
+onclick="plusQty()">
++
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CHECKOUT -->
+
+<div class="checkout">
+
+<div class="checkout-wrap">
+
+<div class="total"
+id="total">
+Rp0
+</div>
+
+<button
+class="buy-btn"
+id="buyBtn"
+disabled>
+BELI TIKET
+</button>
+
+</div>
+
 </div>
 
 <script>
 
-const PRICE = 199000;
+const PRICE=150000;
 
-function changeQty(id,val){
+let qty=0;
 
-const el = document.getElementById(id);
+function showQty(){
 
-let qty = parseInt(el.textContent) + val;
+document.getElementById('btn1').style.display='none';
 
-if(qty < 0) qty = 0;
+document.getElementById('qtyBox').style.display='flex';
 
-el.textContent = qty;
+qty=1;
 
 updateTotal();
 
 }
 
-function updateTotal(){
+function plusQty(){
 
-const day1 = document.getElementById('day1');
-const day2 = document.getElementById('day2');
+qty++;
 
-const total =
-(parseInt(day1.textContent) * PRICE) +
-(parseInt(day2.textContent) * PRICE);
-
-const btn = document.getElementById('payBtn');
-
-btn.innerHTML =
-'LANJUTKAN - Rp ' +
-total.toLocaleString('id-ID');
-
-btn.disabled = total === 0;
-
-btn.classList.toggle('active', total > 0);
+updateTotal();
 
 }
 
-document.getElementById('payBtn')
+function minusQty(){
+
+if(qty>1){
+
+qty--;
+
+updateTotal();
+
+}
+
+}
+
+function updateTotal(){
+
+document.getElementById('qty').innerText=qty;
+
+let total=qty*PRICE;
+
+document.getElementById('total').innerText=
+'Rp'+total.toLocaleString('id-ID');
+
+document.getElementById('buyBtn').disabled=
+total<=0;
+
+}
+
+document.getElementById('buyBtn')
 .addEventListener('click',function(){
 
-if(this.disabled) return;
-
-document.getElementById('loadingScreen')
-.style.display = 'flex';
-
-setTimeout(function(){
-
-window.location.href = 'data.html';
-
-},3000);
+alert(
+'Total Pembayaran : Rp'+
+(qty*PRICE).toLocaleString('id-ID')
+);
 
 });
 
