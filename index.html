@@ -1,296 +1,505 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><!DOCTYPE html>
-<html lang="id">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sounds Of Downtown Festival 2026</title>
+
+<title>SOUNDS OF DOWNTOWN FESTIVAL 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f5f7fb;color:#222;padding-bottom:120px}
-.header{position:sticky;top:0;background:#fff;height:65px;display:flex;align-items:center;padding:0 18px;box-shadow:0 2px 10px rgba(0,0,0,.06);z-index:999}
-.back{font-size:28px;margin-right:15px}
-.titlebar{font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.container{max-width:920px;margin:auto;padding:18px}
-.banner img{width:100%;display:block;border-radius:24px}
-.event-title{font-size:42px;font-weight:900;line-height:1.15;margin-top:20px}
-.meta{margin-top:15px;color:#666;line-height:2;font-size:18px}
-.desc{background:#eef1f5;padding:20px;border-radius:18px;margin-top:18px}
-.desc h3{margin-bottom:10px}
-.section-title{text-align:center;font-size:34px;font-weight:800;margin:35px 0 20px}
-.ticket{background:#fff;border-radius:20px;padding:22px;margin-bottom:16px;box-shadow:0 8px 20px rgba(0,0,0,.05);border-top:5px solid #1e88e5}
-.ticket-name{font-size:26px;font-weight:800}
-.ticket-info{color:#666;margin:10px 0 15px}
-.price{font-size:30px;font-weight:900;color:#1e88e5}
-.action{display:flex;justify-content:flex-end;margin-top:15px}
-.btn{background:#1e88e5;color:#fff;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer}
-.qty{display:none;align-items:center;gap:10px}
-.qty button{width:40px;height:40px;border:none;border-radius:10px;background:#1e88e5;color:#fff;font-size:22px}
-.num{font-size:22px;font-weight:800;min-width:30px;text-align:center}
-.footer{position:fixed;left:0;right:0;bottom:0;background:#fff;padding:15px;box-shadow:0 -5px 20px rgba(0,0,0,.08)}
-.footer-wrap{max-width:920px;margin:auto}
-.total{text-align:center;font-size:24px;font-weight:900;margin-bottom:10px}
-.buy{width:100%;padding:16px;border:none;border-radius:14px;background:#8bbcff;color:#fff;font-size:22px;font-weight:800}
-.buy:disabled{background:#cfd9e8}
-@media(max-width:768px){
-.event-title{font-size:28px}
-.section-title{font-size:24px}
-.ticket-name{font-size:22px}
-.price{font-size:26px}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
+
+body{
+background:#f4f5f7;
+color:#111;
+padding-bottom:120px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+/* HEADER */
+
+.banner{
+width:100%;
+border-radius:18px;
+overflow:hidden;
+margin-bottom:20px;
+background:#ddd;
+}
+
+.banner img{
+width:100%;
+display:block;
+}
+
+/* EVENT */
+
+.event-title{
+font-size:42px;
+font-weight:800;
+line-height:1.2;
+margin-bottom:20px;
+}
+
+.meta{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:20px;
+color:#666;
+margin-bottom:12px;
+}
+
+/* DESKRIPSI */
+
+.desc-box{
+background:#eef0f3;
+padding:22px;
+border-radius:18px;
+margin-top:25px;
+margin-bottom:40px;
+}
+
+.desc-box h2{
+font-size:22px;
+margin-bottom:15px;
+}
+
+.desc-box p{
+font-size:17px;
+line-height:1.8;
+}
+
+.more{
+color:#0d8bff;
+font-weight:600;
+cursor:pointer;
+}
+
+#fullDesc{
+display:none;
+margin-top:15px;
+}
+
+#fullDesc ul{
+padding-left:18px;
+margin-top:10px;
+}
+
+#fullDesc li{
+margin-bottom:10px;
+line-height:1.7;
+}
+
+/* TITLE */
+
+.ticket-title{
+text-align:center;
+font-size:40px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.blue-line{
+height:6px;
+background:#0d8bff;
+border-radius:20px;
+margin-bottom:30px;
+}
+
+/* CARD */
+
+.ticket-card{
+background:#dfe4e8;
+padding:25px;
+border-radius:20px;
+margin-bottom:22px;
+}
+
+.ticket-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.ticket-header h3{
+font-size:28px;
+font-weight:500;
+}
+
+.ticket-header a{
+text-decoration:none;
+color:#0d8bff;
+font-weight:600;
+}
+
+.ticket-date{
+font-size:18px;
+margin-bottom:30px;
+}
+
+.ticket-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+}
+
+.ticket-price{
+font-size:46px;
+font-weight:800;
+}
+
+.ticket-price span{
+font-size:24px;
+font-weight:400;
+color:#888;
+}
+
+.sold{
+font-size:32px;
+font-weight:700;
+color:#ff4b79;
+}
+
+.buy{
+background:#0d8bff;
+border:none;
+color:white;
+padding:12px 22px;
+border-radius:12px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+}
+
+.buy:hover{
+opacity:.9;
+}
+
+/* FOOTER FIXED */
+
+.checkout{
+position:fixed;
+left:0;
+bottom:0;
+width:100%;
+background:white;
+padding:15px;
+box-shadow:0 -5px 20px rgba(0,0,0,.08);
+}
+
+.checkout-btn{
+width:100%;
+height:62px;
+border:none;
+border-radius:18px;
+font-size:22px;
+font-weight:700;
+background:#b8d9ff;
+color:white;
+}
+
+/* FOOTER TEXT */
+
+.footer{
+margin-top:30px;
+text-align:center;
+padding:20px;
+font-size:15px;
+line-height:1.9;
+color:#444;
+}
+
+.footer a{
+color:#111;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.event-title{
+font-size:28px;
+}
+
+.meta{
+font-size:18px;
+}
+
+.ticket-title{
+font-size:28px;
+}
+
+.ticket-header h3{
+font-size:22px;
+}
+
+.ticket-price{
+font-size:28px;
+}
+
+.ticket-price span{
+font-size:18px;
+}
+
+.sold{
+font-size:20px;
+}
+
+.ticket-date{
+font-size:15px;
+}
+
+.buy{
+width:120px;
+}
+
+}
+
 </style>
 </head>
-<body>
 
-<div class="header">
-<div class="back">←</div>
-<div class="titlebar">SOUNDS OF DOWNTOWN FESTIVAL 2026</div>
-</div>
+<body>
 
 <div class="container">
 
 <div class="banner">
-<img src="https://via.placeholder.com/1200x700/114a9f/ffffff?text=SOUNDS+OF+DOWNTOWN+2026">
+<img src="banner.png" alt="SOD Festival 2026">
 </div>
 
-<div class="event-title">SOUNDS OF DOWNTOWN FESTIVAL 2026</div>
+<h1 class="event-title">
+SOUNDS OF DOWNTOWN FESTIVAL 2026
+</h1>
 
 <div class="meta">
-<div>📅 1 & 2 Agustus 2026</div>
-<div>📍 Surabaya</div>
+📅 1 & 2 Agustus 2026
 </div>
 
-<div class="desc">
-<h3>Deskripsi</h3>
-<p>Sounds of Downtown (SOD) Festival 2026 adalah salah satu festival musik tahunan terbesar di Surabaya. Nikmati pengalaman festival terbaik bersama ribuan penonton dengan penampilan musisi pilihan, area kuliner, dan berbagai aktivitas menarik.</p>
+<div class="meta">
+📍 Surabaya
 </div>
 
-<div class="section-title">Tiket</div>
+<div class="desc-box">
 
-<div class="ticket">
-<div class="ticket-name">Mandiri Presale - Day 1</div>
-<div class="ticket-info">Tutup pada 12 Juni 2026, 23:59 WIB</div>
-<div class="price">Rp150.000</div>
-<div class="action">
-<button class="btn" id="btn0" onclick="startTicket(0)">Pilih Tiket</button>
-<div class="qty" id="box0">
-<button onclick="minus(0)">−</button>
-<div class="num" id="qty0">1</div>
-<button onclick="plus(0)">+</button>
+<h2>Deskripsi</h2>
+
+<p>
+Sounds of Downtown (SOD) Festival 2026 adalah salah satu festival musik tahunan terbesar di Surabaya!
+<span class="more" onclick="toggleDesc()">
+Selengkapnya...
+</span>
+</p>
+
+<div id="fullDesc">
+
+<br>
+
+<h3>SOUNDS OF DOWNTOWN FESTIVAL 2026</h3>
+
+<br>
+
+<p>
+Sounds of Downtown (SOD) Festival 2026 adalah salah satu festival musik tahunan terbesar di Surabaya!
+</p>
+
+<br>
+
+<h3>Syarat dan Ketentuan / Terms & Conditions</h3>
+
+<ul>
+
+<li>Satu (1) tiket berlaku untuk satu (1) orang.</li>
+
+<li>Tiket yang sudah dibeli tidak dapat dikembalikan dan diuangkan dengan alasan apapun.</li>
+
+<li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya.</li>
+
+<li>Pembeli wajib mengisi data diri pribadi saat memesan.</li>
+
+<li>Penjualan tiket sewaktu-waktu dapat dihentikan/dimulai sesuai dengan kebijakan promotor.</li>
+
+<li>Tiket ini tidak dapat dipindah-tangankan dan diperjualbelikan.</li>
+
+<li>Panitia/Penyelenggara/Promotor tidak bertanggung jawab atas pembelian tiket melalui calo/tempat/kanal/platform yang bukan mitra resmi penjualan tiket.</li>
+
+<li>Pengunjung bertanggung jawab penuh terhadap keamanan diri dan semua barang pribadinya.</li>
+
+<li>Pengunjung dilarang merekam dengan kamera profesional untuk kepentingan komersial.</li>
+
+<li>Pengunjung dilarang mengambil foto menggunakan flash.</li>
+
+<li>Pengunjung dilarang membawa senjata api, senjata tajam, dan benda berbahaya.</li>
+
+<li>Pengunjung dilarang membawa makanan dan minuman dari luar.</li>
+
+<li>Penyelenggara memiliki hak untuk melarang masuk pengunjung jika tiket tidak valid atau telah digunakan orang lain.</li>
+
+<li>Penyelenggara berhak memproses hukum pengunjung yang mendapatkan tiket secara melawan hukum.</li>
+
+<li>Dalam keadaan Force Majeure seperti bencana alam, perang, wabah, dan sebagainya, panitia berhak membatalkan acara atau memindahkan jadwal tanpa pemberitahuan sebelumnya.</li>
+
+</ul>
+
 </div>
+
+</div>
+
+<h2 class="ticket-title">Tiket</h2>
+
+<div class="blue-line"></div>
+
+<!-- SOLD OUT DAY 1 -->
+
+<div class="ticket-card">
+
+<div class="ticket-header">
+<h3>Mandiri Presale - Day 1</h3>
+<a href="#">S&K</a>
+</div>
+
+<div class="ticket-date">
+🕒 Tutup pada 12 Jun 2026, 23:59 WIB
+</div>
+
+<div class="ticket-bottom">
+<div class="ticket-price">
+Rp159.900<span>/tiket</span>
+</div>
+
+<div class="sold">
+SOLD OUT
 </div>
 </div>
 
-<div class="ticket">
-<div class="ticket-name">Normal Day 1</div>
-<div class="ticket-info">Festival Standing</div>
-<div class="price">Rp250.000</div>
-<div class="action">
-<button class="btn" id="btn1" onclick="startTicket(1)">Pilih Tiket</button>
-<div class="qty" id="box1">
-<button onclick="minus(1)">−</button>
-<div class="num" id="qty1">1</div>
-<button onclick="plus(1)">+</button>
 </div>
+
+<!-- SOLD OUT DAY 2 -->
+
+<div class="ticket-card">
+
+<div class="ticket-header">
+<h3>Mandiri Presale - Day 2</h3>
+<a href="#">S&K</a>
+</div>
+
+<div class="ticket-date">
+🕒 Tutup pada 12 Jun 2026, 23:59 WIB
+</div>
+
+<div class="ticket-bottom">
+<div class="ticket-price">
+Rp159.900<span>/tiket</span>
+</div>
+
+<div class="sold">
+SOLD OUT
 </div>
 </div>
 
-<div class="ticket">
-<div class="ticket-name">Normal Day 2</div>
-<div class="ticket-info">Festival Standing</div>
-<div class="price">Rp250.000</div>
-<div class="action">
-<button class="btn" id="btn2" onclick="startTicket(2)">Pilih Tiket</button>
-<div class="qty" id="box2">
-<button onclick="minus(2)">−</button>
-<div class="num" id="qty2">1</div>
-<button onclick="plus(2)">+</button>
 </div>
+
+<!-- NORMAL DAY 1 -->
+
+<div class="ticket-card">
+
+<div class="ticket-header">
+<h3>Normal - Day 1</h3>
+<a href="#">S&K</a>
 </div>
+
+<div class="ticket-date">
+🕒 Tutup pada 31 Jul 2026, 23:59 WIB
+</div>
+
+<div class="ticket-bottom">
+<div class="ticket-price">
+Rp210.000<span>/tiket</span>
+</div>
+
+<button class="buy">
+Pilih
+</button>
+</div>
+
+</div>
+
+<!-- NORMAL DAY 2 -->
+
+<div class="ticket-card">
+
+<div class="ticket-header">
+<h3>Normal - Day 2</h3>
+<a href="#">S&K</a>
+</div>
+
+<div class="ticket-date">
+🕒 Tutup pada 31 Jul 2026, 23:59 WIB
+</div>
+
+<div class="ticket-bottom">
+<div class="ticket-price">
+Rp210.000<span>/tiket</span>
+</div>
+
+<button class="buy">
+Pilih
+</button>
 </div>
 
 </div>
 
 <div class="footer">
-<div class="footer-wrap">
-<div class="total" id="total">Lanjutkan - Rp 0</div>
-<button class="buy" id="buyBtn" disabled>Lanjutkan</button>
-</div>
-</div>
 
-<script>
-const prices=[150000,250000,250000];
-let qty=[0,0,0];
+Produk atau jasa ini disediakan dan menjadi tanggung jawab Moflip.
 
-function startTicket(i){
-document.getElementById('btn'+i).style.display='none';
-document.getElementById('box'+i).style.display='flex';
-qty[i]=1;
-update();
-}
+<br><br>
 
-function plus(i){qty[i]++;update();}
+Untuk layanan contact center Moflip, silahkan email ke
+notification@moflip.com.
 
-function minus(i){
-if(qty[i]>1){qty[i]--;update();}
-}
+<br><br>
 
-function update(){
-let total=0;
-for(let i=0;i<3;i++){
-document.getElementById('qty'+i).innerText=qty[i];
-total+=qty[i]*prices[i];
-}
-document.getElementById('total').innerText='Lanjutkan - Rp '+total.toLocaleString('id-ID');
-document.getElementById('buyBtn').disabled=total===0;
-}
-</script>
+Cek syarat dan ketentuan lengkap
+<a href="#">di sini</a>
 
-</body>
-</html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sounds Of Downtown Festival 2026</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f5f7fb;color:#222;padding-bottom:120px}
-.header{position:sticky;top:0;background:#fff;height:65px;display:flex;align-items:center;padding:0 18px;box-shadow:0 2px 10px rgba(0,0,0,.06);z-index:999}
-.back{font-size:28px;margin-right:15px}
-.titlebar{font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.container{max-width:920px;margin:auto;padding:18px}
-.banner img{width:100%;display:block;border-radius:24px}
-.event-title{font-size:42px;font-weight:900;line-height:1.15;margin-top:20px}
-.meta{margin-top:15px;color:#666;line-height:2;font-size:18px}
-.desc{background:#eef1f5;padding:20px;border-radius:18px;margin-top:18px}
-.desc h3{margin-bottom:10px}
-.section-title{text-align:center;font-size:34px;font-weight:800;margin:35px 0 20px}
-.ticket{background:#fff;border-radius:20px;padding:22px;margin-bottom:16px;box-shadow:0 8px 20px rgba(0,0,0,.05);border-top:5px solid #1e88e5}
-.ticket-name{font-size:26px;font-weight:800}
-.ticket-info{color:#666;margin:10px 0 15px}
-.price{font-size:30px;font-weight:900;color:#1e88e5}
-.action{display:flex;justify-content:flex-end;margin-top:15px}
-.btn{background:#1e88e5;color:#fff;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer}
-.qty{display:none;align-items:center;gap:10px}
-.qty button{width:40px;height:40px;border:none;border-radius:10px;background:#1e88e5;color:#fff;font-size:22px}
-.num{font-size:22px;font-weight:800;min-width:30px;text-align:center}
-.footer{position:fixed;left:0;right:0;bottom:0;background:#fff;padding:15px;box-shadow:0 -5px 20px rgba(0,0,0,.08)}
-.footer-wrap{max-width:920px;margin:auto}
-.total{text-align:center;font-size:24px;font-weight:900;margin-bottom:10px}
-.buy{width:100%;padding:16px;border:none;border-radius:14px;background:#8bbcff;color:#fff;font-size:22px;font-weight:800}
-.buy:disabled{background:#cfd9e8}
-@media(max-width:768px){
-.event-title{font-size:28px}
-.section-title{font-size:24px}
-.ticket-name{font-size:22px}
-.price{font-size:26px}
-}
-</style>
-</head>
-<body>
-
-<div class="header">
-<div class="back">←</div>
-<div class="titlebar">SOUNDS OF DOWNTOWN FESTIVAL 2026</div>
-</div>
-
-<div class="container">
-
-<div class="banner">
-<img src="https://via.placeholder.com/1200x700/114a9f/ffffff?text=SOUNDS+OF+DOWNTOWN+2026">
-</div>
-
-<div class="event-title">SOUNDS OF DOWNTOWN FESTIVAL 2026</div>
-
-<div class="meta">
-<div>📅 1 & 2 Agustus 2026</div>
-<div>📍 Surabaya</div>
-</div>
-
-<div class="desc">
-<h3>Deskripsi</h3>
-<p>Sounds of Downtown (SOD) Festival 2026 adalah salah satu festival musik tahunan terbesar di Surabaya. Nikmati pengalaman festival terbaik bersama ribuan penonton dengan penampilan musisi pilihan, area kuliner, dan berbagai aktivitas menarik.</p>
-</div>
-
-<div class="section-title">Tiket</div>
-
-<div class="ticket">
-<div class="ticket-name">Mandiri Presale - Day 1</div>
-<div class="ticket-info">Tutup pada 12 Juni 2026, 23:59 WIB</div>
-<div class="price">Rp150.000</div>
-<div class="action">
-<button class="btn" id="btn0" onclick="startTicket(0)">Pilih Tiket</button>
-<div class="qty" id="box0">
-<button onclick="minus(0)">−</button>
-<div class="num" id="qty0">1</div>
-<button onclick="plus(0)">+</button>
-</div>
-</div>
-</div>
-
-<div class="ticket">
-<div class="ticket-name">Normal Day 1</div>
-<div class="ticket-info">Festival Standing</div>
-<div class="price">Rp250.000</div>
-<div class="action">
-<button class="btn" id="btn1" onclick="startTicket(1)">Pilih Tiket</button>
-<div class="qty" id="box1">
-<button onclick="minus(1)">−</button>
-<div class="num" id="qty1">1</div>
-<button onclick="plus(1)">+</button>
-</div>
-</div>
-</div>
-
-<div class="ticket">
-<div class="ticket-name">Normal Day 2</div>
-<div class="ticket-info">Festival Standing</div>
-<div class="price">Rp250.000</div>
-<div class="action">
-<button class="btn" id="btn2" onclick="startTicket(2)">Pilih Tiket</button>
-<div class="qty" id="box2">
-<button onclick="minus(2)">−</button>
-<div class="num" id="qty2">1</div>
-<button onclick="plus(2)">+</button>
-</div>
-</div>
 </div>
 
 </div>
 
-<div class="footer">
-<div class="footer-wrap">
-<div class="total" id="total">Lanjutkan - Rp 0</div>
-<button class="buy" id="buyBtn" disabled>Lanjutkan</button>
-</div>
+<div class="checkout">
+<button class="checkout-btn">
+Lanjutkan - Rp 0
+</button>
 </div>
 
 <script>
-const prices=[150000,250000,250000];
-let qty=[0,0,0];
 
-function startTicket(i){
-document.getElementById('btn'+i).style.display='none';
-document.getElementById('box'+i).style.display='flex';
-qty[i]=1;
-update();
+function toggleDesc(){
+
+const desc = document.getElementById('fullDesc');
+
+if(desc.style.display === 'block'){
+desc.style.display='none';
+}else{
+desc.style.display='block';
 }
 
-function plus(i){qty[i]++;update();}
-
-function minus(i){
-if(qty[i]>1){qty[i]--;update();}
 }
 
-function update(){
-let total=0;
-for(let i=0;i<3;i++){
-document.getElementById('qty'+i).innerText=qty[i];
-total+=qty[i]*prices[i];
-}
-document.getElementById('total').innerText='Lanjutkan - Rp '+total.toLocaleString('id-ID');
-document.getElementById('buyBtn').disabled=total===0;
-}
 </script>
 
 </body>
