@@ -591,24 +591,20 @@ minus.onclick=()=>{
 };
 });
 
-document.querySelector('.checkout-btn').onclick=()=>{
+let daftarTiket=[];
 
-    if(total<=0){
-        alert('Silakan pilih tiket terlebih dahulu');
-        return;
+document.querySelectorAll('.ticket-action').forEach(a=>{
+    const qty=parseInt(a.querySelector('.qty').textContent)||0;
+
+    if(qty>0){
+        daftarTiket.push(
+            a.querySelector('.buy').dataset.name +
+            ' x' + qty
+        );
     }
+});
 
-    let jumlahTiket = 0;
-
-    document.querySelectorAll('.ticket-action').forEach(a=>{
-        jumlahTiket += parseInt(a.querySelector('.qty').textContent) || 0;
-    });
-
-    localStorage.setItem('jumlahTiket', jumlahTiket);
-    localStorage.setItem('totalPembayaran', total);
-
-    location.href='from.html';
-};
+localStorage.setItem('jenisTiket', daftarTiket.join(', '));
   
 </script>
 </body>
