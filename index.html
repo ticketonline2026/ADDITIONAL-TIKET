@@ -556,54 +556,49 @@ document.querySelectorAll('.ticket-action').forEach(a=>{
    total += q*p;
  }
 });
-document.querySelector('.checkout-btn').onclick=()=>{
+document.querySelector('.checkout-btn').textContent='Lanjutkan - Rp '+total.toLocaleString('id-ID');
+}
 
-    if(total<=0){
-        alert('Silakan pilih tiket terlebih dahulu');
-        return;
-    }
+document.querySelectorAll('.ticket-action').forEach(a=>{
+const buy=a.querySelector('.buy');
+const box=a.querySelector('.qty-box');
+const qty=a.querySelector('.qty');
+const plus=a.querySelector('.plus');
+const minus=a.querySelector('.minus');
 
-    let jumlahTiket = 0;
-    let daftarTiket = [];
-
-    document.querySelectorAll('.ticket-action').forEach(a=>{
-
-        const qty =
-        parseInt(a.querySelector('.qty').textContent) || 0;
-
-        const namaTiket =
-        a.querySelector('.buy').dataset.name;
-
-        jumlahTiket += qty;
-
-        if(qty > 0){
-            daftarTiket.push(
-                namaTiket + ' x' + qty
-            );
-        }
-
-    });
-
-    localStorage.setItem(
-        'jenisTiket',
-        daftarTiket.join(', ')
-    );
-
-    localStorage.setItem(
-        'jumlahTiket',
-        jumlahTiket
-    );
-
-    localStorage.setItem(
-        'totalPembayaran',
-        total
-    );
-
-    location.href='from.html';
+buy.onclick=()=>{
+ buy.style.display='none';
+ box.style.display='flex';
+ qty.textContent='1';
+ updateTotal();
 };
 
-localStorage.setItem('jenisTiket', daftarTiket.join(', '));
-  
+plus.onclick=()=>{
+ qty.textContent=parseInt(qty.textContent)+1;
+ updateTotal();
+};
+
+minus.onclick=()=>{
+ let n=parseInt(qty.textContent)-1;
+ if(n<=0){
+   qty.textContent='0';
+   box.style.display='none';
+   buy.style.display='inline-block';
+ }else{
+   qty.textContent=n;
+ }
+ updateTotal();
+};
+});
+
+document.querySelector('.checkout-btn').onclick=()=>{
+ if(total<=0){
+   alert('Silakan pilih tiket terlebih dahulu');
+   return;
+ }
+ localStorage.setItem('totalPembayaran',total);
+ location.href='from.html';
+};
 </script>
 </body>
 </html>
