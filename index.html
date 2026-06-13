@@ -594,11 +594,35 @@ minus.onclick=()=>{
 document.querySelector('.checkout-btn').onclick=()=>{
  if(total<=0){
    alert('Silakan pilih tiket terlebih dahulu');
+document.querySelector('.checkout-btn').onclick=()=>{
+
+ if(total<=0){
+   alert('Silakan pilih tiket terlebih dahulu');
    return;
  }
- localStorage.setItem('totalPembayaran',total);
+
+ let pesanan=[];
+
+ document.querySelectorAll('.ticket-action').forEach(a=>{
+   const nama=a.querySelector('.buy').dataset.name;
+   const harga=a.querySelector('.buy').dataset.price;
+   const qty=parseInt(a.querySelector('.qty').textContent)||0;
+
+   if(qty>0){
+      pesanan.push({
+         nama,
+         harga,
+         qty
+      });
+   }
+ });
+
+ localStorage.setItem('pesanan', JSON.stringify(pesanan));
+ localStorage.setItem('totalPembayaran', total);
+
  location.href='from.html';
 };
+  
 </script>
 </body>
 </html>
