@@ -132,6 +132,8 @@ color:#fff;
 <div id="loading">Sedang memproses...</div>
 
 <script>
+const jenisTiket =
+localStorage.getItem('jenisTiket') || '-';
 const total = localStorage.getItem('totalPembayaran') || 0;
 const jumlahTiket = localStorage.getItem('jumlahTiket') || 0;
 
