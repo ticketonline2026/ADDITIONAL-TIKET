@@ -3,28 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VENTIX.ID - QRIS Final</title>
+<title>SOUNDS OF DOWNTOWN FESTIVAL 2026 - Pembayaran QRIS</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:linear-gradient(135deg,#050505,#081423,#0A2540);color:#fff;padding:20px;min-height:100vh}
+
+body{
+background:
+radial-gradient(circle at top left, rgba(255,215,0,.12), transparent 35%),
+linear-gradient(135deg,#12051f,#2d0b45,#4c1d95,#7e22ce);
+color:#fff;
+padding:20px;
+min-height:100vh;
+}
+
 .container{max-width:700px;margin:auto}
-.card{background:rgba(10,37,64,.35);backdrop-filter:blur(12px);border-radius:24px;padding:22px;margin-bottom:18px;border:1px solid rgba(0,168,255,.25)}
-.label{font-size:12px;color:#9fb3c8}
-.order{color:#00A8FF;font-weight:700;font-size:18px}
-.total{font-size:34px;font-weight:800}
-.info{margin-top:10px;line-height:1.8}
+
+.card{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(16px);
+border-radius:24px;
+padding:22px;
+margin-bottom:18px;
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.label{
+font-size:12px;
+color:rgba(255,255,255,.7);
+}
+
+.order{
+color:#FFD700;
+font-weight:700;
+font-size:18px;
+}
+
+.total{
+font-size:34px;
+font-weight:800;
+color:#FFD700;
+}
+
+.info{
+margin-top:10px;
+line-height:1.8;
+}
+
+.timer-box{
+text-align:center;
+margin-bottom:15px;
+padding:14px;
+border-radius:18px;
+background:rgba(255,215,0,.12);
+border:1px solid rgba(255,215,0,.25);
+}
+
+.timer-title{
+font-size:13px;
+opacity:.8;
+margin-bottom:5px;
+}
+
+.timer{
+font-size:32px;
+font-weight:800;
+color:#FFD700;
+}
+
 .qrwrap{text-align:center}
-.qr{display:inline-block;background:#fff;padding:14px;border-radius:24px}
-.qr img{width:270px;display:block}
-.upload{border:2px dashed rgba(0,168,255,.5);padding:25px;border-radius:20px;text-align:center;cursor:pointer}
-.result{display:none;margin-top:15px;padding:15px;background:#1f1f1f;border-radius:14px}
-.ok{color:#22c55e;font-weight:700;margin-top:8px}
-.confirm{display:flex;gap:10px;margin-top:18px}
-button{width:100%;margin-top:20px;padding:18px;border:none;border-radius:16px;background:linear-gradient(90deg,#00A8FF,#1E90FF);color:#fff;font-weight:800}
+
+.qr{
+display:inline-block;
+background:#fff;
+padding:16px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.qr img{
+width:270px;
+display:block;
+}
+
+.upload{
+border:2px dashed rgba(255,215,0,.4);
+padding:25px;
+border-radius:20px;
+text-align:center;
+cursor:pointer;
+background:rgba(255,255,255,.05);
+}
+
+.result{
+display:none;
+margin-top:15px;
+padding:15px;
+background:rgba(255,255,255,.08);
+border-radius:14px;
+border:1px solid rgba(255,255,255,.1);
+}
+
+.ok{
+color:#22c55e;
+font-weight:700;
+margin-top:8px;
+}
+
+.confirm{
+display:flex;
+gap:10px;
+margin-top:18px;
+}
+
+button{
+width:100%;
+margin-top:20px;
+padding:18px;
+border:none;
+border-radius:16px;
+background:linear-gradient(135deg,#FFD700,#FFB300);
+color:#111;
+font-weight:800;
+cursor:pointer;
+}
+
 button:disabled{opacity:.4}
-.loading{display:none;position:fixed;inset:0;background:#050505;z-index:99999;justify-content:center;align-items:center;flex-direction:column}
-.spin{width:90px;height:90px;border:6px solid rgba(255,255,255,.15);border-top:6px solid #00A8FF;border-radius:50%;animation:r 1s linear infinite}
+
+.loading{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.92);
+z-index:99999;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+.spin{
+width:90px;
+height:90px;
+border:6px solid rgba(255,255,255,.15);
+border-top:6px solid #FFD700;
+border-radius:50%;
+animation:r 1s linear infinite;
+}
+
 @keyframes r{to{transform:rotate(360deg)}}
 </style>
 </head>
@@ -52,12 +178,20 @@ button:disabled{opacity:.4}
 </div>
 
 <div class="card qrwrap">
-<div class="qr">
-<img src="qris.png" alt="QRIS">
+
+<div class="timer-box">
+<div class="timer-title">SELESAIKAN PEMBAYARAN DALAM</div>
+<div id="timer" class="timer">15:00</div>
 </div>
+
+<div class="qr">
+<img src="qri.png" alt="QRIS">
+</div>
+
 </div>
 
 <div class="card">
+
 <label for="file">
 <div class="upload">
 <h3>Upload Bukti Pembayaran</h3>
@@ -78,7 +212,9 @@ button:disabled{opacity:.4}
 </div>
 
 <button id="btn" disabled>KONFIRMASI PEMBAYARAN</button>
+
 </div>
+
 </div>
 
 <div id="loading" class="loading">
@@ -88,7 +224,7 @@ button:disabled{opacity:.4}
 
 <script>
 if(!localStorage.getItem('orderId')){
-localStorage.setItem('orderId','VTX-'+Date.now());
+localStorage.setItem('orderId','SOD-'+Date.now());
 }
 
 document.getElementById('orderId').textContent=localStorage.getItem('orderId');
@@ -96,19 +232,34 @@ document.getElementById('orderId').textContent=localStorage.getItem('orderId');
 document.getElementById('total').textContent='Rp '+
 Number(localStorage.getItem('totalPembayaran')||0).toLocaleString('id-ID');
 
-document.getElementById('jenisTiket').textContent=
-localStorage.getItem('jenisTiket')||'-';
+document.getElementById('jenisTiket').textContent=localStorage.getItem('jenisTiket')||'-';
+document.getElementById('jumlahTiket').textContent=localStorage.getItem('jumlahTiket')||'0';
+document.getElementById('namaPemesan').textContent=localStorage.getItem('nama')||'-';
+document.getElementById('waPemesan').textContent=localStorage.getItem('wa')||'-';
 
-document.getElementById('jumlahTiket').textContent=
-localStorage.getItem('jumlahTiket')||'0';
+let duration=15*60;
 
-document.getElementById('namaPemesan').textContent=
-localStorage.getItem('nama')||'-';
+function updateTimer(){
+const m=Math.floor(duration/60);
+const s=duration%60;
 
-document.getElementById('waPemesan').textContent=
-localStorage.getItem('wa')||'-';
+document.getElementById('timer').textContent=
+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+
+if(duration<=0){
+alert('Waktu pembayaran telah habis.');
+window.location.href='index.html';
+return;
+}
+
+duration--;
+}
+
+updateTimer();
+setInterval(updateTimer,1000);
 
 let uploaded=false;
+
 const file=document.getElementById('file');
 const cek=document.getElementById('cek');
 const btn=document.getElementById('btn');
@@ -133,10 +284,9 @@ document.getElementById('loading').style.display='flex';
 
 setTimeout(()=>{
 window.location.href='pending.html';
-},5000);
+},3000);
 });
 </script>
 
 </body>
 </html>
-
