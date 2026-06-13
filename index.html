@@ -270,6 +270,46 @@ width:120px;
 
 }
 
+
+.qty-box{display:none;align-items:center;gap:10px}
+.qty-btn{width:40px;height:40px;border:none;border-radius:10px;background:#0d8bff;color:#fff;font-size:22px;font-weight:700;cursor:pointer}
+.qty{min-width:30px;text-align:center;font-size:20px;font-weight:700}
+.on-sale{font-size:24px;font-weight:700;color:#22c55e}
+
+
+body{
+background:
+radial-gradient(circle at top left, rgba(255,215,0,.12), transparent 35%),
+linear-gradient(135deg,#12051f,#2d0b45,#4c1d95,#7e22ce);
+color:#fff;
+}
+.ticket-card,.desc-box,.checkout{
+background:rgba(255,255,255,.12)!important;
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+.event-title{
+background:linear-gradient(135deg,#fff,#ffe082,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.meta,.footer,.desc-box p,.desc-box li{color:#f1f1f1}
+.ticket-price{color:#FFD700}
+.buy,.qty-btn{
+background:linear-gradient(135deg,#FFD700,#FFB300)!important;
+color:#111!important;
+font-weight:800;
+}
+.checkout-btn{
+background:linear-gradient(135deg,#FFD700,#FFB300)!important;
+color:#111!important;
+}
+.banner img{
+border-radius:18px;
+box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
 </style>
 </head>
 
@@ -380,8 +420,8 @@ Sounds of Downtown (SOD) Festival 2026 adalah salah satu festival musik tahunan 
 Rp159.900<span>/tiket</span>
 </div>
 
-<div class="on-sale">
-ON SALE
+<div class="sold">
+SOLD OUT
 </div>
 </div>
 
@@ -430,9 +470,14 @@ SOLD OUT
 Rp210.000<span>/tiket</span>
 </div>
 
-<button class="buy">
-Pilih
-</button>
+<div class="ticket-action">
+<button class="buy" data-name="Normal - Day 1" data-price="210000">Pilih</button>
+<div class="qty-box">
+<button class="qty-btn minus">-</button>
+<span class="qty">0</span>
+<button class="qty-btn plus">+</button>
+</div>
+</div>
 </div>
 
 </div>
@@ -455,9 +500,14 @@ Pilih
 Rp210.000<span>/tiket</span>
 </div>
 
-<button class="buy">
-Pilih
-</button>
+<div class="ticket-action">
+<button class="buy" data-name="Normal - Day 2" data-price="210000">Pilih</button>
+<div class="qty-box">
+<button class="qty-btn minus">-</button>
+<span class="qty">0</span>
+<button class="qty-btn plus">+</button>
+</div>
+</div>
 </div>
 
 </div>
@@ -474,7 +524,7 @@ notification@moflip.com.
 <br><br>
 
 Cek syarat dan ketentuan lengkap
-<a href="#">from.html</a>
+<a href="#">SODFESTIVAL 2026</a>
 
 </div>
 
@@ -486,21 +536,69 @@ Lanjutkan - Rp 0
 </button>
 </div>
 
+
 <script>
-
 function toggleDesc(){
-
-const desc = document.getElementById('fullDesc');
-
-if(desc.style.display === 'block'){
-desc.style.display='none';
-}else{
-desc.style.display='block';
+const desc=document.getElementById('fullDesc');
+desc.style.display=desc.style.display==='block'?'none':'block';
 }
 
+let total=0;
+
+function updateTotal(){
+total=0;
+document.querySelectorAll('.ticket-action').forEach(a=>{
+ const buy=a.querySelector('.buy');
+ const qtyEl=a.querySelector('.qty');
+ if(qtyEl){
+   const q=parseInt(qtyEl.textContent)||0;
+   const p=parseInt(buy.dataset.price)||0;
+   total += q*p;
+ }
+});
+document.querySelector('.checkout-btn').textContent='Lanjutkan - Rp '+total.toLocaleString('id-ID');
 }
 
+document.querySelectorAll('.ticket-action').forEach(a=>{
+const buy=a.querySelector('.buy');
+const box=a.querySelector('.qty-box');
+const qty=a.querySelector('.qty');
+const plus=a.querySelector('.plus');
+const minus=a.querySelector('.minus');
+
+buy.onclick=()=>{
+ buy.style.display='none';
+ box.style.display='flex';
+ qty.textContent='1';
+ updateTotal();
+};
+
+plus.onclick=()=>{
+ qty.textContent=parseInt(qty.textContent)+1;
+ updateTotal();
+};
+
+minus.onclick=()=>{
+ let n=parseInt(qty.textContent)-1;
+ if(n<=0){
+   qty.textContent='0';
+   box.style.display='none';
+   buy.style.display='inline-block';
+ }else{
+   qty.textContent=n;
+ }
+ updateTotal();
+};
+});
+
+document.querySelector('.checkout-btn').onclick=()=>{
+ if(total<=0){
+   alert('Silakan pilih tiket terlebih dahulu');
+   return;
+ }
+ localStorage.setItem('totalPembayaran',total);
+ location.href='from.html';
+};
 </script>
-
 </body>
 </html>
