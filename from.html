@@ -134,11 +134,11 @@ color:#fff;
 <script>
 const total = localStorage.getItem('totalPembayaran') || 0;
 const jumlahTiket = localStorage.getItem('jumlahTiket') || 0;
-const jenisTiket = localStorage.getItem('jenisTiket') || '-';
+
+document.getElementById('jumlahTiket').innerText = jumlahTiket;
 
 document.getElementById('totalBayar').innerText =
 'Rp' + Number(total).toLocaleString('id-ID');
-
 document.getElementById('jumlahTiket').innerText = jumlahTiket;
 document.getElementById('jenisTiket').innerText = jenisTiket;
 
